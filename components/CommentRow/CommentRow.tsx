@@ -1,13 +1,13 @@
 import React from "react";
 
-import Avatar from "../../components/Avatar/Avatar";
+import Avatar from "../Avatar/Avatar";
 import ReactTimeago from "react-timeago";
 
 type Props = {
   comment: Comment;
 };
 
-function Comment({ comment }: Props) {
+function CommentRow({ comment }: Props) {
   return (
     <div className="relative flex items-center space-x-2 space-y-5">
       <hr className="absolute top-10 left-7 z-0 h-16 border" />
@@ -28,4 +28,4 @@ function Comment({ comment }: Props) {
   );
 }
 
-export default Comment;
+export default CommentRow;

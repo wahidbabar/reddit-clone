@@ -5,7 +5,6 @@ type Comment = {
   text: string;
   username: string;
 };
-
 type Vote = {
   created_at: string;
   id: number;

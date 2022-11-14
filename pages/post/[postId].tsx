@@ -1,17 +1,29 @@
 import React from "react";
 
 import { useRouter } from "next/router";
-import { useMutation, useQuery } from "@apollo/client";
+import {
+  useFragment_experimental,
+  useMutation,
+  useQuery,
+} from "@apollo/client";
 import { GET_POST_BY_POST_ID } from "../../graphql/queries";
 import Post from "../../components/Post/Post";
 import { useSession } from "next-auth/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ADD_COMMENT } from "../../graphql/mutations";
 import { toast } from "react-hot-toast";
-import Comment from "../../components/Comment/Comment";
+import CommentRow from "../../components/CommentRow/CommentRow";
 
 type FormData = {
   comment: string;
+};
+
+type Comment = {
+  created_at: string;
+  id: number;
+  post_id: number;
+  text: string;
+  username: string;
 };
 
 function PostPage() {
@@ -30,6 +42,7 @@ function PostPage() {
   });
 
   const post: Post = data?.getPostListByPostId;
+  const comments = post?.comments;
 
   const {
     register,
@@ -95,8 +108,8 @@ function PostPage() {
       <div className="-my-5 rounded-b-md border-t-0 border-gray-300 bg-white py-5 px-10">
         <hr className="py-2" />
 
-        {post?.comments?.map((comment, i) => (
-          <Comment comment={comment} key={i} />
+        {comments?.map((comment, i) => (
+          <CommentRow key={comment.id} comment={comment} />
         ))}
       </div>
     </div>
