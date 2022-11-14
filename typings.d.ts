@@ -1,4 +1,4 @@
-type Comment = {
+type Comment1 = {
   created_at: string;
   id: number;
   post_id: number;

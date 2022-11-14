@@ -4,7 +4,7 @@ import Avatar from "../Avatar/Avatar";
 import ReactTimeago from "react-timeago";
 
 type Props = {
-  comment: Comment;
+  comment: Comment1;
 };
 
 function CommentRow({ comment }: Props) {

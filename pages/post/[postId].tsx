@@ -18,14 +18,6 @@ type FormData = {
   comment: string;
 };
 
-type Comment = {
-  created_at: string;
-  id: number;
-  post_id: number;
-  text: string;
-  username: string;
-};
-
 function PostPage() {
   const {
     query: { postId },
@@ -108,7 +100,7 @@ function PostPage() {
       <div className="-my-5 rounded-b-md border-t-0 border-gray-300 bg-white py-5 px-10">
         <hr className="py-2" />
 
-        {comments?.map((comment, i) => (
+        {comments?.map((comment) => (
           <CommentRow key={comment.id} comment={comment} />
         ))}
       </div>

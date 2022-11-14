@@ -1,4 +1,4 @@
-type Comment {
+type Comment1 {
   created_at: DateTime
   id: ID!
   post_id: ID
@@ -19,7 +19,7 @@ type Post {
       query: "getVotesByPostId"
       arguments: [{ name: "post_id", field: "id" }]
     )
-  comments: [Comment]
+  comments: [Comment1]
     @materializer(
       query: "getCommentByPostId"
       arguments: [{ name: "post_id", field: "id" }]
@@ -46,7 +46,7 @@ type Vote {
 }
 
 type Query {
-  getCommentList: [Comment]
+  getCommentList: [Comment1]
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -54,7 +54,7 @@ type Query {
       configuration: "postgresql_config"
     )
 
-  getCommentByPostId(post_id: ID!): [Comment]
+  getCommentByPostId(post_id: ID!): [Comment1]
     @dbquery(
       type: "postgresql"
       schema: "public"
@@ -87,7 +87,7 @@ type Query {
   """
   This query is an example of how to simply paginate your responses.
   """
-  getPaginatedCommentList(first: Int!, after: Int!): [Comment]
+  getPaginatedCommentList(first: Int!, after: Int!): [Comment1]
     @dbquery(
       type: "postgresql"
       query: """
@@ -99,7 +99,7 @@ type Query {
   In this example, a single query parameter is passed. If the request to the DB will
   return at most one value you can remove the square brackets from the result.
   """
-  getCommentByPost_id(post_id: ID!): [Comment]
+  getCommentByPost_id(post_id: ID!): [Comment1]
     @dbquery(
       type: "postgresql"
       query: """
@@ -111,7 +111,7 @@ type Query {
   In this example, two query parameters are passed. If the request to the DB will
   return at most one value you can remove the square brackets from the result.
   """
-  getCommentByPost_idAndUsername(post_id: ID!, username: String!): [Comment]
+  getCommentByPost_idAndUsername(post_id: ID!, username: String!): [Comment1]
     @dbquery(
       type: "postgresql"
       query: """
@@ -212,7 +212,7 @@ type Mutation {
       configuration: "postgresql_config"
     )
 
-  insertComment(post_id: ID!, text: String!, username: String!): Comment
+  insertComment(post_id: ID!, text: String!, username: String!): Comment1
     @dbquery(
       type: "postgresql"
       table: "comment"
