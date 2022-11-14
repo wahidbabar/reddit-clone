@@ -1,11 +1,7 @@
 import React from "react";
 
 import { useRouter } from "next/router";
-import {
-  useFragment_experimental,
-  useMutation,
-  useQuery,
-} from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { GET_POST_BY_POST_ID } from "../../graphql/queries";
 import Post from "../../components/Post/Post";
 import { useSession } from "next-auth/react";
